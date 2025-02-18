@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    "prod": "next build"
+    "build": "next build",
+    "prod": "next build; next start",
+    "start": "next start"
   },
   "author": "YuriGM1",
   "license": "MIT",

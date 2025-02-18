@@ -4,7 +4,8 @@
   "description": "For Curso.DEV learning",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev"
+    "dev": "next dev",
+    "prod": "next build"
   },
   "author": "YuriGM1",
   "license": "MIT",

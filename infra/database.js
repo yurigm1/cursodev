@@ -9,11 +9,18 @@ async function query(queryObject) {
     password: process.env.POSTGRES_PASSWORD,
   });
   await client.connect();
-  const result = await client.query(queryObject);
-  client.end();
-  return result;
+  try {
+    const result = await client.query(queryObject);
+    return result;
+  } catch (error) {
+    console.log(error);
+  } finally {
+    client.end();
+  }
 }
 
 export default {
   query: query,
 };
+
+//psql --host=localhost --port=5432 --username=local_user --dbname=local_db

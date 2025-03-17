@@ -34,6 +34,6 @@ export default async function migrations(request, response) {
   } catch (error) {
     console.log(error);
   } finally {
-    dbClient.end();
+    await dbClient.end();
   }
 }

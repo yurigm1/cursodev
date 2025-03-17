@@ -15,10 +15,6 @@ export default async function migrations(request, response) {
   };
 
   try {
-    if (!request.method === "GET" && !request.method === "POST") {
-      return response.status(405).end();
-    }
-
     if (request.method === "GET") {
       const pendingMigrations = await migrationRunner(defaultMigrationOptions);
       return response.status(200).json(pendingMigrations);
@@ -31,10 +27,11 @@ export default async function migrations(request, response) {
       if (migratedMigrations.length > 0) {
         return response.status(201).json(migratedMigrations);
       }
-
       return response.status(200).json(migratedMigrations);
+    } else {
+      return response.status(405).end(`Method ${request.method} now allowed`);
     }
-  } catch {
+  } catch (error) {
     console.log(error);
   } finally {
     dbClient.end();

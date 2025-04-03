@@ -28,9 +28,10 @@ async function getNewClient() {
   return client;
 }
 
-export default {
+const database = {
   query,
   getNewClient,
 };
+export default database;
 
 //psql --host=localhost --port=5432 --username=local_user --dbname=local_db
